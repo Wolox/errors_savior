@@ -1,7 +1,7 @@
 # Changelog
 
 ## Master (unreleased)
-
+* [#1](https://github.com/Wolox/errors_savior/pull/1): Repository configurations - [@lucasVoboril](https://github.com/lucasVoboril)
 
 ## Changelog entry format
 
