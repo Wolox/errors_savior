@@ -9,3 +9,9 @@
 
 # rspec failure tracking
 .rspec_status
+
+spec/rails_app/db/*.sqlite3
+spec/rails_app/log/*.log
+spec/rails_app/tmp/
+
+.byebug_history
