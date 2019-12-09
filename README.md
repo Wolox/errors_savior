@@ -1,5 +1,7 @@
 # ErrorsSavior
 
+Rails middleware to catches exceptions and renders them as JSON with a specific response body protocol.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -16,10 +18,63 @@ Or install it yourself as:
 
     $ gem install errors_savior
 
+
+## Conventions
+
+| Range | Description |
+| ----- | ----------- |
+| 1xxx  | Model errors |
+| 2xxx  | Controller errors |
+| 3xxx  | Server errors |
+
+## Usage
+
+When an error occurs in your application, you will see a json response body with  ErrorsSavior [specific protocol](lib/errors_savior/presenter/protocol.rb), similar to the following:
+
+```json
+{
+  "error_code": 2020,
+  "message": "External request error",
+  "timestamp": "2019-12-25 00:00:00 UTC",
+  "errors": {
+    "101": "Error with CustomExternalApi"
+  }
+}
+```
+
+
+If your application is running in development mode, you will see more information related to the error like `error_class` and `backtrace`:
+
+```json
+{
+  "error_code": 1000,
+  "message": "The record is invalid",
+  "timestamp": "2019-12-25 00:00:00 UTC",
+  "errors": {
+    "email": {
+      "102": "cant be empty",
+      "104": "must be a string",
+      "106": "must be an email"
+    },
+    "age": {
+      "101": "must be an int"
+    }
+  },
+  "metadata": {
+    "stack_trace": [
+      "... Line 1 ...",
+      "... Line 2 ..."
+    ],
+    "error_class": "ActiveRecord::RecordInvalid",
+    "api_origin": "internal_api_origin"
+  }
+}
+```
+
 ## Contributing
 
 We hope that you will consider contributing to ErrorsSavior.
-Please read [this overview](https://github.com/Wolox/errors_savior/blob/master/CONTRIBUTING.md#create-pull-request) for some information about how to get started.
+Please read [this overview](CONTRIBUTING.md#create-pull-request) for some information about how to get started.
 
 
 ## Releases
@@ -28,12 +83,12 @@ Please read [this overview](https://github.com/Wolox/errors_savior/blob/master/C
 
 ## Code of Conduct
 
-Everyone interacting in the ErrorsSavior project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/Wolox/errors_savior/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ErrorsSavior project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
 
 
 ## License
 
-**Errors Savior** is available under the [MIT license](https://raw.githubusercontent.com/Wolox/errors_savior/blob/master/LICENSE.md).
+**Errors Savior** is available under the [MIT license](LICENSE.md).
 
 
 ## About
