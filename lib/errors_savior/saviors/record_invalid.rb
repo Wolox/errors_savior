@@ -7,7 +7,7 @@ module ErrorsSavior
 
       def self.format(exception)
         {
-          class: self.error_class,
+          class: error_class,
           errors: format_errors(exception.record.errors.details)
         }
       end
@@ -17,7 +17,11 @@ module ErrorsSavior
       end
 
       def self.flatten(errors)
-        errors.map { |field, f_errors| f_errors.map { |f_error| { field: field }.merge(f_error) } }.flatten
+        errors.map do |field, f_errors|
+          f_errors.map do |f_error|
+            { field: field }.merge(f_error)
+          end
+        end.flatten
       end
 
       def self.format_errors(errors)

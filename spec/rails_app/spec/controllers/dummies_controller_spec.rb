@@ -1,8 +1,6 @@
-require 'spec_helper'
-
 describe DummiesController, type: :controller do
-  describe 'POST #create' do
-    subject(:make_request) { post :create }
+  describe '#create' do
+    subject(:make_request) { post :create, params: { name: 'dummy', number: 123 } }
 
     before do
       make_request

@@ -1,6 +1,14 @@
 Rails:
   Enabled: true
 
+AllCops:
+  Exclude:
+    - errors_savior.gemspec
+    - spec/rails_app/db/**/*
+    - spec/rails_app/bin/**/*
+    - spec/rails_app/config/**/*
+    - spec/spec_helper.rb
+
 Style/Documentation:
   Enabled: false
 
