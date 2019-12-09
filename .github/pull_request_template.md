@@ -20,5 +20,5 @@ Before submitting the PR make sure the following are checked:
 * [ ] Added an entry to the [Changelog](https://github.com/Wolox/errors_savior/blob/master/CHANGELOG.md) if the new code introduces user-observable changes. See [changelog entry format](https://github.com/Wolox/errors_savior/blob/master/CHANGELOG.md#changelog-entry-format).
 
 ### When creating a pull request
-* [ ] Assign properly label depending on the category of the pull request. It should be one of [**BUG**, **FEATURE**, **ENHANCEMENT**, **GEM RELEASE**]
+* [ ] Assign properly label depending on the category of the pull request. It should be one of [**BUG**, **FEATURE**, **ENHANCEMENT**, **GEM RELEASE**, **DOCUMENTATION**]
 * [ ] Fix problems if the CI fails
