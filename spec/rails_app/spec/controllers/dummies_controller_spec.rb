@@ -22,7 +22,7 @@ describe DummiesController, type: :controller do
       end
       let(:create_params) { repeated_data }
       let(:dummy_instance) { Dummy.create(repeated_data) }
-      let(:required_error_body_keys) { %w[error_code message timestamp] }
+      let(:required_error_body_keys) { %w[error_code message timestamp metadata] }
 
       before do
         dummy_instance
