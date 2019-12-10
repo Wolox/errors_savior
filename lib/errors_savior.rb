@@ -1,7 +1,8 @@
 require 'errors_savior/version'
 require 'errors_savior/config'
-require 'errors_savior/saviors/record_invalid'
 require 'active_support/all'
+
+Dir[File.dirname(__FILE__) + '/errors_savior/**/*.rb'].each { |file| require file }
 
 module ErrorsSavior
   extend ActiveSupport::Concern
