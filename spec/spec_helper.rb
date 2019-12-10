@@ -21,6 +21,7 @@ Dir[Rails.root.join('..', 'errors_savior', 'support', '**', '*.rb')].each { |f| 
 
 RSpec.configure do |config|
   config.include ActionDispatch::TestProcess
+  config.include Response::JSONParser, type: :controller
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
 

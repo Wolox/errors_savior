@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_221151) do
+ActiveRecord::Schema.define(version: 2019_12_10_191251) do
 
   create_table "dummies", force: :cascade do |t|
     t.string "name"
     t.integer "number"
+    t.index ["number"], name: "index_dummies_on_number", unique: true
   end
 
 end

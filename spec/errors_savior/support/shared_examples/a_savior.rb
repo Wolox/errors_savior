@@ -16,7 +16,7 @@ shared_examples 'a savior' do
   describe '#error_class' do
     let(:attribute) { :error_class }
 
-    it { expect(described_class.error_class).to eq(dictinary_data) }
+    it { expect(described_class.error_class).to eq(dictinary_data.constantize) }
   end
 
   describe '#http_status_sym' do

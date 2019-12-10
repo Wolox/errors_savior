@@ -2,8 +2,12 @@ require 'errors_savior/version'
 require 'errors_savior/config'
 require 'active_support/all'
 
-Dir[File.dirname(__FILE__) + '/errors_savior/**/*.rb'].each { |file| require file }
-Dir[File.dirname(__FILE__) + '/errors_savior/**/**/*.rb'].each { |file| require file }
+require 'errors_savior/dictionary/local_dictionary'
+
+require 'errors_savior/protocol/render_error'
+
+require 'errors_savior/saviors/base_savior'
+require 'errors_savior/saviors/not_unique'
 
 module ErrorsSavior
   extend ActiveSupport::Concern
@@ -17,8 +21,10 @@ module ErrorsSavior
       savior = Saviors.const_get(const)
       next if savior == ErrorsSavior::Saviors::BaseSavior || !savior.is_a?(Class)
 
-      rescue_from savior.error_class do |e|
-        ErrorsSavior::Protocol::RenderError.new(savior, e).render_error
+      rescue_from savior.error_class do |error|
+        Rails.logger.error(savior.savior_attributes)
+        protocol = ErrorsSavior::Protocol::RenderError.new(savior, error)
+        render json: protocol.as_json, status: savior.http_status_sym
       end
     end
   end

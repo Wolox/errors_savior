@@ -13,7 +13,7 @@ module ErrorsSavior
         end
 
         def error_class
-          errors_dictionary[error_sym][__method__].constantize.name
+          errors_dictionary[error_sym][__method__].constantize
         end
 
         def error_code
@@ -30,6 +30,16 @@ module ErrorsSavior
 
         def message
           errors_dictionary[error_sym][__method__]
+        end
+
+        def savior_methods
+          %i[error_class error_code http_status_sym http_status_code message]
+        end
+
+        def savior_attributes
+          savior_methods.each_with_object({}) do |method, base_hash|
+            base_hash[method] = public_send(method)
+          end
         end
       end
     end

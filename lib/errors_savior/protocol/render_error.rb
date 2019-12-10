@@ -6,14 +6,9 @@ module ErrorsSavior
         @error = error
       end
 
-      def render_errors
-        Rails.logger.error(@savior)
-        render json: as_json, status: @savior.http_status_sym
-      end
-
       def as_json
         json = required_error_body
-        json['errors'] = errors.as_json if errors.present?
+        json['errors'] = errors.as_json if @savior.respond_to?(:errors)
 
         @consider_all_requests_local ? append_meatadata(json) : json
       end
