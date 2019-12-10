@@ -12,8 +12,7 @@ module ErrorsSavior
         %i[error_class error_code http_status_sym http_status_code message]
       end
 
-      module_function :errors_dictionary
-      module_function :required_attributes
+      module_function :errors_dictionary, :required_attributes
     end
   end
 end

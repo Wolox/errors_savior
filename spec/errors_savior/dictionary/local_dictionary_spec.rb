@@ -16,7 +16,7 @@ describe ErrorsSavior::Dictionary::LocalDictionary do
 
     it 'includes the required attributes' do
       required_attributes = described_class.required_attributes
-      expect(dictionary).to be_all do |error_sym, attributes|
+      expect(dictionary).to be_all do |_error_sym, attributes|
         required_attributes == attributes.keys.map(&:to_sym)
       end
     end

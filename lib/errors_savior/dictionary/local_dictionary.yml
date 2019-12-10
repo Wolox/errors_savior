@@ -11,7 +11,7 @@ field_validation_error:
 record_invalid:
   error_class: ActiveRecord::RecordInvalid
   error_code: 1002
-  http_status_sym: bad_request
+  http_status_sym: unprocessable_entity
   http_status_code: 400
   message: Record invalid
 
