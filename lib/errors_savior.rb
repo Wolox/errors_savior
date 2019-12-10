@@ -3,6 +3,7 @@ require 'errors_savior/config'
 require 'active_support/all'
 
 Dir[File.dirname(__FILE__) + '/errors_savior/**/*.rb'].each { |file| require file }
+Dir[File.dirname(__FILE__) + '/errors_savior/**/**/*.rb'].each { |file| require file }
 
 module ErrorsSavior
   extend ActiveSupport::Concern
@@ -14,10 +15,10 @@ module ErrorsSavior
   included do
     Saviors.constants.each do |const|
       savior = Saviors.const_get(const)
-      next unless savior.is_a? Class
+      next if savior == ErrorsSavior::Saviors::BaseSavior || !savior.is_a?(Class)
 
       rescue_from savior.error_class do |e|
-        render json: savior.format(e), status: savior.status
+        ErrorsSavior::Protocol::RenderError.new(savior, e).render_error
       end
     end
   end

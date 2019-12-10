@@ -17,6 +17,8 @@ ActiveRecord::Migration.maintain_test_schema!
 
 Bundler.require(:default)
 
+Dir[Rails.root.join('..', 'errors_savior', 'support', '**', '*.rb')].each { |f| require f }
+
 RSpec.configure do |config|
   config.include ActionDispatch::TestProcess
   # Enable flags like --only-failures and --next-failure
