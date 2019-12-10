@@ -2,30 +2,35 @@
 # -------------------
 
 field_validation_error:
+  error_class: ActiveModel::ValidationError
   error_code: 1001
   http_status_sym: unprocessable_entity
   http_status_code: 422
   message: One or more fields are invalid
 
 record_invalid:
+  error_class: ActiveRecord::RecordInvalid
   error_code: 1002
   http_status_sym: bad_request
   http_status_code: 400
   message: Record invalid
 
 record_not_destroyed:
+  error_class: ActiveRecord::RecordNotDestroyed
   error_code: 1003
   http_status_sym: bad_request
   http_status_code: 400
   message: [Records full messages]
 
 not_found:
+  error_class: ActiveRecord::RecordNotFound
   error_code: 1004
   http_status_sym: not_found
   http_status_code: 404
   message: "%{Variable message}"
 
 not_unique:
+  error_class: ActiveRecord::RecordNotUnique
   error_code: 1005
   http_status_sym: unprocessable_entity
   http_status_code: 422
@@ -34,21 +39,9 @@ not_unique:
 
 # Controller errors (2xxx)
 # ------------------------
-
 parameter_missing:
+  error_class: ActionController::ParameterMissing
   error_code: 2001
   http_status_sym: bad_request
   http_status_code: 400
   message: The required param %{param_name} is empty or missing
-
-not_authorized:
-  error_code: 2002
-  http_status_sym: unauthorized
-  http_status_code: 401
-  message: You are not authorized to carry out this action
-
-invalid_parameter:
-  error_code: 2003
-  http_status_sym: bad_request
-  http_status_code: 400
-  message: "%{Variable message}"

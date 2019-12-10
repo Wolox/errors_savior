@@ -7,7 +7,7 @@ describe ErrorsSavior::Dictionary::LocalDictionary do
     end
 
     let(:controller_saviors) do
-      %w[parameter_missing not_authorized invalid_parameter]
+      %w[parameter_missing]
     end
 
     it 'includes model and controller saviors' do
