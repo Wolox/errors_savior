@@ -19,7 +19,7 @@ describe ErrorsSavior::Config, type: :controller do
   end
 
   described_class::DEFAULT_CONFIG.each do |attribute, _value|
-    context "changing #{attribute}" do
+    context "when changing #{attribute}" do
       let(:random_attribute) { rand(300) }
 
       before do
