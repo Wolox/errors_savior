@@ -27,3 +27,8 @@ Describe here what actually happened.
 ## Steps to reproduce the problem
 
 Providing us with a reliable way to reproduce a problem will expedite its solution.
+
+### Versions
+**Ruby version:**  (please complete the following information)
+**Rails version:** (please complete the following information)
+**ErrorsSavior version:** (please complete the following information)
