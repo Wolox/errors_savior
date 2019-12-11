@@ -1,8 +1,6 @@
 # ErrorsSavior
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/errors_savior`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Rails middleware to catches exceptions and renders them as JSON with a specific response body protocol.
 
 ## Installation
 
@@ -20,24 +18,89 @@ Or install it yourself as:
 
     $ gem install errors_savior
 
+
+## Conventions
+
+| Range | Description |
+| ----- | ----------- |
+| 1xxx  | Model errors |
+| 2xxx  | Controller errors |
+| 3xxx  | Server errors |
+
 ## Usage
 
-TODO: Write usage instructions here
+When an error occurs in your application, you will see a json response body with  ErrorsSavior [specific protocol](lib/errors_savior/presenter/protocol.rb), similar to the following:
 
-## Development
+```json
+{
+  "error_code": 2020,
+  "message": "External request error",
+  "timestamp": "2019-12-25 00:00:00 UTC",
+  "errors": {
+    "101": "Error with CustomExternalApi"
+  }
+}
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+If your application is running in development mode, you will see more information related to the error like `error_class` and `backtrace`:
+
+```json
+{
+  "error_code": 1000,
+  "message": "The record is invalid",
+  "timestamp": "2019-12-25 00:00:00 UTC",
+  "errors": {
+    "email": {
+      "102": "cant be empty",
+      "104": "must be a string",
+      "106": "must be an email"
+    },
+    "age": {
+      "101": "must be an int"
+    }
+  },
+  "metadata": {
+    "stack_trace": [
+      "... Line 1 ...",
+      "... Line 2 ..."
+    ],
+    "error_class": "ActiveRecord::RecordInvalid",
+    "api_origin": "internal_api_origin"
+  }
+}
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/errors_savior. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+We hope that you will consider contributing to ErrorsSavior.
+Please read [this overview](CONTRIBUTING.md#create-pull-request) for some information about how to get started.
 
-## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+## Releases
+📢 [See what's changed in a recent version](https://github.com/Wolox/errors_savior/releases)
+
 
 ## Code of Conduct
 
-Everyone interacting in the ErrorsSavior project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/errors_savior/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the ErrorsSavior project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
+
+
+## License
+
+**Errors Savior** is available under the [MIT license](LICENSE.md).
+
+
+## About
+
+The current maintainers of this gem are :
+* [Manuel Tejedor](https://github.com/mtejedorwolox)
+* [Lucas Voboril](https://github.com/lucasVoboril)
+
+This project was developed by:
+* [Manuel Tejedor](https://github.com/mtejedorwolox)
+* [Lucas Voboril](https://github.com/lucasVoboril)
+
+At [Wolox](https://www.wolox.com.ar)
+
+[![Wolox](https://raw.githubusercontent.com/Wolox/press-kit/master/logos/logo_banner.png)](https://www.wolox.com.ar)

@@ -1,7 +1,7 @@
-require "errors_savior/version"
-require "errors_savior/config"
-require "errors_savior/saviors/record_invalid"
-require "active_support/all"
+require 'errors_savior/version'
+require 'errors_savior/config'
+require 'errors_savior/saviors/record_invalid'
+require 'active_support/all'
 
 module ErrorsSavior
   extend ActiveSupport::Concern
