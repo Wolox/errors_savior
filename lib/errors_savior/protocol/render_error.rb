@@ -24,7 +24,7 @@ module ErrorsSavior
       def append_metadata(json)
         json['metadata'] = {}
         json['metadata']['error_class'] = @savior.error_class.name
-        # TODO: json['metadata']['api_origin'] = ErrorsSavior.config.api_origin.enabled?
+        json['metadata']['api_origin'] = Config.api_origin if Config.api_origin.present?
         json['metadata']['stack_trace'] = @error.backtrace
 
         json
