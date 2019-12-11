@@ -2,17 +2,16 @@ require 'generator_spec'
 require 'generators/errors_savior/install'
 
 describe ErrorsSavior::Generators::Install, type: :generator do
-  context 'generating the initializer ' do
-    destination File.expand_path('../../../tmp', __FILE__)
+  context 'when generating the initializer' do
+    destination File.expand_path('../../tmp', __dir__)
 
-    before(:all) do
+    before do
       prepare_destination
       run_generator
     end
 
-    # rubocop:disable Style/BlockDelimiters
     it 'generates the correct structure for initializer' do
-      expect(destination_root).to(have_structure {
+      expect(destination_root).to(have_structure do
         no_file 'errors_savior.rb'
         directory 'config' do
           no_file 'errors_savior.rb'
@@ -22,8 +21,7 @@ describe ErrorsSavior::Generators::Install, type: :generator do
             end
           end
         end
-      })
+      end)
     end
-    # rubocop:enable Style/BlockDelimiters
   end
 end
