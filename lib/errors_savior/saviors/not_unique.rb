@@ -1,8 +1,8 @@
 module ErrorsSavior
   module Saviors
     class NotUnique < BaseSavior
-      def self.error_sym
-        :not_unique
+      def self.error_class_name
+        'ActiveRecord::RecordNotUnique'
       end
     end
   end

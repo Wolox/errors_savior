@@ -4,7 +4,7 @@ shared_examples 'a savior' do
   end
 
   let(:dictinary_data) do
-    dictionary[error_sym][attribute]
+    dictionary[error_class_name][attribute]
   end
 
   describe '#error_code' do
@@ -16,7 +16,7 @@ shared_examples 'a savior' do
   describe '#error_class' do
     let(:attribute) { :error_class }
 
-    it { expect(described_class.error_class).to eq(dictinary_data.constantize) }
+    it { expect(described_class.error_class).to eq(error_class_name.constantize) }
   end
 
   describe '#http_status_sym' do

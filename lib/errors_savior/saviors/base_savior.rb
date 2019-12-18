@@ -4,7 +4,7 @@ module ErrorsSavior
       # self.abstract_class = true
 
       class << self
-        def error_sym
+        def error_class_name
           raise 'SubclassResponsibility'
         end
 
@@ -13,23 +13,23 @@ module ErrorsSavior
         end
 
         def error_class
-          errors_dictionary[error_sym][__method__].constantize
+          error_class_name.constantize
         end
 
         def error_code
-          errors_dictionary[error_sym][__method__].to_i
+          errors_dictionary[error_class_name][__method__].to_i
         end
 
         def http_status_sym
-          errors_dictionary[error_sym][__method__].to_sym
+          errors_dictionary[error_class_name][__method__].to_sym
         end
 
         def http_status_code
-          errors_dictionary[error_sym][__method__].to_i
+          errors_dictionary[error_class_name][__method__].to_i
         end
 
         def message
-          errors_dictionary[error_sym][__method__]
+          errors_dictionary[error_class_name][__method__]
         end
 
         def savior_methods
