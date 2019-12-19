@@ -1,9 +1,11 @@
 module ErrorsSavior
   module Saviors
-    class BaseSavior
-      # self.abstract_class = true
+    module BaseSavior
+      def self.included(base)
+        base.extend ClassMethods
+      end
 
-      class << self
+      module ClassMethods
         def error_class_name
           raise 'SubclassResponsibility'
         end
