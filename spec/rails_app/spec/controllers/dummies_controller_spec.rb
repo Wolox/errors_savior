@@ -37,5 +37,24 @@ describe DummiesController, type: :controller do
         expect(response_body.keys).to eq(required_error_body_keys)
       end
     end
+
+    context 'without required param' do
+      let(:create_params) do
+        { name: 'dummy' }
+      end
+
+      before do
+        make_request
+      end
+
+      it 'responds with 400, bad_request' do
+        expect(response).to have_http_status(:bad_request)
+      end
+
+      it 'rescuted by parameter_missing savior' do
+        expect(response_body['errors']['number']).to \
+          eq('param is missing or the value is empty: number')
+      end
+    end
   end
 end
