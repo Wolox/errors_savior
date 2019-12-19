@@ -18,6 +18,12 @@ Or install it yourself as:
 
     $ gem install errors_savior
 
+## Generator
+
+To create the initializer for configuration details, you can run:
+
+    $ rails generate errors_savior:install
+
 
 ## Conventions
 
