@@ -116,6 +116,26 @@ ErrorsSavior use `:en` locale as default.
 If you need to use another locale, you should override all default Saviors with your custom locale
 
 
+### Rspec helpers
+
+You only need to add this line in your `rails_helper.rb`
+
+```ruby
+# spec/rails_helper.rb
+
+require 'errors_savior/rspec'
+```
+
+#### `be_rescuted_by.savior` Rspec matcher
+You can use the `be_rescuted_by.savior` matcher to test your endpoints.
+
+```rb
+# spec/errors/custom_error_spec.rb
+describe DummiesController do
+  it { expect(response).to be_rescuted_by.savior('ParameterMissing') }
+end
+```
+
 ## Contributing
 
 We hope that you will consider contributing to ErrorsSavior.
