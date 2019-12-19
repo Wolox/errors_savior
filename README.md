@@ -126,13 +126,13 @@ You only need to add this line in your `rails_helper.rb`
 require 'errors_savior/rspec'
 ```
 
-#### `be_rescuted_by.savior` Rspec matcher
-You can use the `be_rescuted_by.savior` matcher to test your endpoints.
+#### `be_rescuted_by_savior` Rspec matcher
+You can use the `be_rescuted_by_savior` matcher to test your endpoints.
 
 ```rb
 # spec/errors/custom_error_spec.rb
 describe DummiesController do
-  it { expect(response).to be_rescuted_by.savior('ParameterMissing') }
+  it { expect(response).to be_rescuted_by_savior }
 end
 ```
 
