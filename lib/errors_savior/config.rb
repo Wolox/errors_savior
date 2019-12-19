@@ -1,7 +1,9 @@
 module ErrorsSavior
   module Config
     DEFAULT_CONFIG = {
-      api_origin: nil
+      api_origin: nil,
+      external_dictionary_errors_path: '',
+      locale: :en
     }.freeze
 
     module_function

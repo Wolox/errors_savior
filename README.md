@@ -77,6 +77,45 @@ If your application is running in development mode, you will see more informatio
 }
 ```
 
+### Use your own dicionary
+
+It's possible to create your custom dictionary, if you need to modify any default Savior.
+
+For example, you can change this default savior:
+```yml
+ActiveModel::ValidationError:
+  error_code: 1001
+  http_status_sym: unprocessable_entity
+  http_status_code: 422
+  message: One or more fields are invalid
+```
+
+With another values:
+```yml
+# config/locales/gems/errors_savior/en.yml
+
+en:
+  ActiveModel::ValidationError:
+    error_code: 1234
+    http_status_sym: bad_request
+    http_status_code: 400
+    message: Modified message
+```
+
+Remember to set in ErrorsSavior initializers the following variables:
+* `external_dictionary_errors_path`
+* `locale`
+
+In the example above, we have used:
+> config.external_dictionary_errors_path = 'config/locales/gems/errors_savior'
+
+> config.locale = :en
+
+**Note**
+ErrorsSavior use `:en` locale as default.
+If you need to use another locale, you should override all default Saviors with your custom locale
+
+
 ## Contributing
 
 We hope that you will consider contributing to ErrorsSavior.
@@ -94,7 +133,7 @@ Everyone interacting in the ErrorsSavior project’s codebases, issue trackers, 
 
 ## License
 
-**Errors Savior** is available under the [MIT license](LICENSE.md).
+**Errors Savior** is available under the [MIT license](LICENSE.txt).
 
 
 ## About
