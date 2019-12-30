@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :dummies, only: [:create]
+  resources :dummies, only: [:create] do
+    get :my_error
+  end
 end

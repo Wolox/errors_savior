@@ -4,3 +4,8 @@ en:
     http_status_sym: bad_request
     http_status_code: 400
     message: Modified message
+  MySavior:
+    error_code: 4001
+    http_status_sym: bad_request
+    http_status_code: 400
+    message: My custom error message

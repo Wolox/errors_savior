@@ -4,6 +4,10 @@ class DummiesController < ApplicationController
     head :ok
   end
 
+  def my_error
+    raise MySavior
+  end
+
   private
 
   def create_params

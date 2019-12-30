@@ -65,4 +65,10 @@ describe DummiesController, type: :controller do
       end
     end
   end
+
+  describe '#my_error' do
+    subject(:make_request) { get :my_error }
+
+    it { expect(response).to be_rescuted_by_savior }
+  end
 end
