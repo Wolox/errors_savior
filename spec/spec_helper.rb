@@ -9,6 +9,8 @@ require 'rails_app/db/schema'
 
 require 'errors_savior'
 
+require 'errors_savior/rspec'
+
 SimpleCov.start
 
 ENV['RAILS_ENV'] = 'test'

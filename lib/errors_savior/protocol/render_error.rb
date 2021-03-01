@@ -8,7 +8,7 @@ module ErrorsSavior
 
       def as_json
         json = required_error_body
-        json['errors'] = errors.as_json if @savior.respond_to?(:errors)
+        json['errors'] = @savior.errors(@error).as_json if @savior.respond_to?(:errors)
 
         Rails.configuration.consider_all_requests_local ? append_metadata(json) : json
       end
