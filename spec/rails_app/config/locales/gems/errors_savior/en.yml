@@ -1,0 +1,6 @@
+en:
+  ActionController::ParameterMissing:
+    error_code: 2001
+    http_status_sym: bad_request
+    http_status_code: 400
+    message: Modified message
