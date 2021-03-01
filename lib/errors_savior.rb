@@ -8,6 +8,7 @@ require 'errors_savior/protocol/render_error'
 
 require 'errors_savior/saviors/base_savior'
 require 'errors_savior/saviors/not_unique'
+require 'errors_savior/saviors/parameter_missing'
 
 module ErrorsSavior
   extend ActiveSupport::Concern
