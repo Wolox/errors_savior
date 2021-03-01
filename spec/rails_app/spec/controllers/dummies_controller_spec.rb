@@ -55,6 +55,14 @@ describe DummiesController, type: :controller do
         expect(response_body['errors']['number']).to \
           eq('param is missing or the value is empty: number')
       end
+
+      it { expect(response).to be_rescuted_by_savior }
+
+      context 'with external errors dictionary' do
+        it 'returns your custom message' do
+          expect(response_body['message']).to eq('Modified message')
+        end
+      end
     end
   end
 end
