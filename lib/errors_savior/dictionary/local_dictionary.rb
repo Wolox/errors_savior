@@ -32,6 +32,10 @@ module ErrorsSavior
       def read_dictionary(dir, locale)
         HashWithIndifferentAccess.new(YAML.safe_load(File.read(dir)))[locale]
       end
+
+      def find_savior_by_error_code(error_code)
+        Hash[*errors_dictionary.detect { |_key, value| value[:error_code] == error_code }]
+      end
     end
   end
 end
