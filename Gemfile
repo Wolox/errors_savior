@@ -17,4 +17,5 @@ group :development, :test do
   gem 'faker'
   gem 'rubocop'
   gem 'rubocop-rspec'
+  gem 'generator_spec'
 end
