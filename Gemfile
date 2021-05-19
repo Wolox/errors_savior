@@ -7,7 +7,7 @@ gemspec
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'puma', '~> 4.3'
+  gem 'puma', '~> 5.3'
   gem 'simplecov'
   gem 'rspec-rails'
   gem 'bootsnap', '>= 1.1.0'
